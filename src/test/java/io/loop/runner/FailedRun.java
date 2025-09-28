@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
                 "html:target/html-reports/cucumber-report.html",
                 "rerun:target/rerun.txt",
                 "json:target/json-reports/json-report.json",
-                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
+                //"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
         },
         features = "@target/rerun.txt",
         glue = "io.loop",
@@ -20,7 +20,7 @@ import org.junit.runner.RunWith;
 )
 
 
-public class FailedRunner {
+public class FailedRun {
 
 
 }
