@@ -143,8 +143,8 @@ public class BrowserUtil {
      * @param timeToWaitInSec
      * @return
      */
-    public static WebElement waitForVisibility(WebElement element, Duration timeToWaitInSec) {
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeToWaitInSec);
+    public static WebElement waitForVisibility(WebElement element, int timeToWaitInSec) {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeToWaitInSec));
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
 
@@ -167,8 +167,8 @@ public class BrowserUtil {
      * @param timeout
      * @return
      */
-    public static WebElement waitForClickablility(WebElement element, Duration timeout) {
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeout);
+    public static WebElement waitForClickablility(WebElement element, int timeout) {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
@@ -179,8 +179,8 @@ public class BrowserUtil {
      * @param timeout
      * @return
      */
-    public static WebElement waitForClickablility(By locator, Duration timeout) {
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeout);
+    public static WebElement waitForClickablility(By locator, int timeout) {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
@@ -189,14 +189,14 @@ public class BrowserUtil {
      *
      * @param timeOutInSeconds
      */
-    public static void waitForPageToLoad(Duration timeOutInSeconds) {
+    public static void waitForPageToLoad(int timeOutInSeconds) {
         ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver driver) {
                 return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
             }
         };
         try {
-            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeOutInSeconds);
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeOutInSeconds));
             wait.until(expectation);
         } catch (Throwable error) {
             error.printStackTrace();

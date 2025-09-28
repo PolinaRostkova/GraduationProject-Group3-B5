@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
                 "html:target/html-reports/all-report.html",
                 "json:target/json-reports/all-report.json",
                 "rerun:target/rerun.txt",
-                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
+               // "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
         },
         monochrome = true,
         publish = false
