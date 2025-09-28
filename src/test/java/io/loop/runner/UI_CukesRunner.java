@@ -5,17 +5,18 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
+        features = "classpath:features/ui",
+        glue = "io.loop",           // or "io.loop.ui" only for UI
+        tags = "@ui",
+        dryRun = false,              // turn off after it compiles
         plugin = {
                 "pretty",
-                "html:target/html-reports/cucumber-reports.html",
-                "rerun:target/rerun.txt",
-                "json:target/json-reports/json-report.json",
-                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+                "html:target/html-reports/ui-report.html",
+                "json:target/json-reports/ui-report.json",
+                "rerun:target/rerun.txt"
+                // add the Extent adapter back after the POM fix below
+                // "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
         },
-        features ="classpath:features/ui",
-        glue = "io.loop",
-        dryRun = false,
-        tags = "@ui",
         monochrome = true,
         publish = false
 )
