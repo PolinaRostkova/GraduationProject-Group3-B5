@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
         features = "classpath:features/ui",
         glue = "io.loop.ui",           // or "io.loop.ui" only for UI
         tags = "@ui",
-        dryRun = false,              // turn off after it compiles
+        dryRun = true,              // turn off after it compiles
         plugin = {
                 "pretty",
                 "html:target/html-reports/ui-report.html",
