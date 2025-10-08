@@ -1,10 +1,9 @@
-@ui
+
 Feature: Docuport login and logout feature
 
   Background: this is for navigating to Docuport page
     Given user is on Docuport login page
 
-  @ui
   Scenario Outline: Login for all the <role>
     #Given user is on Docuport login page
     When user enters username for "<roleUsername>"

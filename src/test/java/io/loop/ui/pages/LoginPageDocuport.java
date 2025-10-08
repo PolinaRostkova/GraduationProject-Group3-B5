@@ -73,5 +73,14 @@ public class LoginPageDocuport extends BaseDocuportPage{
 
     }
 
+    /**
+     * reusable method for password
+     * @param role
+     * @return password
+     * JanePolihun
+     */
+  public String getPasswordByRole(String role)  {
+        return "Group2";
+  }
 
 }
