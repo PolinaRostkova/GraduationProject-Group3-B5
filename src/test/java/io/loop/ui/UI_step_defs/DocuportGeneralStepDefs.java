@@ -27,10 +27,6 @@ public class DocuportGeneralStepDefs {
     }
     @Then("user uploads a document")
     public void user_uploads_a_document() throws Exception {
-//        WebElement element = Driver.getDriver().findElement(By.xpath("//input[@type='file']"));
-//        element.sendKeys("/Users/Polina/Desktop/untitled.txt");
-        // BrowserUtils.uploadFileMac("/Users/Polina/Desktop/untitled.txt");
-        //BrowserUtils.uploadFileUsingAppleScript("/Users/Polina/Desktop/untitled.txt");
         BrowserUtils.uploadFileMac2("/Users/Polina/Desktop/untitled.txt");
     }
     @Then("a new tab should open with heading {string}")
