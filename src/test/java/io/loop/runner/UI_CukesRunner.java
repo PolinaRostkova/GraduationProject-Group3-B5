@@ -7,10 +7,10 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "classpath:features/ui",
         glue = "io.loop",           // or "io.loop.ui" only for UI
-        tags = "@ui",
+        tags = "@receivedPageSearch",
         dryRun = false,              // turn off after it compiles
         plugin = {
-                "pretty",
+                //"pretty",
                 "html:target/html-reports/ui-report.html",
                 "json:target/json-reports/ui-report.json",
                 "rerun:target/rerun.txt"
