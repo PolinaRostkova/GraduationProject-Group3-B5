@@ -162,7 +162,6 @@ public class BrowserUtil {
 
     /**
      * Waits for provided element to be clickable
-     *
      * @param element
      * @param timeout
      * @return
@@ -170,6 +169,25 @@ public class BrowserUtil {
     public static WebElement waitForClickablility(WebElement element, int timeout) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
         return wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    /**
+     * Waits for provided element to be clickable
+     * @param element
+     * @param timeout
+     * @return
+     * @author veronika
+     */
+    public static WebElement waitForClickable2(WebElement element, int timeout) {
+
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
+        try {
+            System.out.println("try");
+            return wait.until(ExpectedConditions.elementToBeClickable(element));
+        } catch (StaleElementReferenceException e) {
+            System.out.println("catch");
+            return wait.until(ExpectedConditions.elementToBeClickable(element));
+        }
     }
 
     /**
