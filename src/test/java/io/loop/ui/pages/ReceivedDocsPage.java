@@ -7,6 +7,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
+import static org.junit.Assert.assertTrue;
+
+/**
+ * page created by Polina for Receives doc page
+ */
 public class ReceivedDocsPage {
 
     public ReceivedDocsPage() {
@@ -61,9 +68,27 @@ public class ReceivedDocsPage {
     @FindBy(xpath = "//div[.='Bookkeeping' and @class='v-list-item__title']")
     private WebElement bookkeepingOption;
 
-    @FindBy(xpath = "//*[@id=\"list-item-451-3\"]/div")
+    @FindBy(xpath = "//div[contains(@class,'v-list-item__title') and normalize-space()='Advisor No lastname']   /ancestor::div[contains(@class,'v-list-item')]   /following-sibling::div[1]   //div[contains(@class,'v-list-item__title') and normalize-space()='Batch1 Group1']")
     private WebElement batch1group1_Option;
 
+    @FindBy(xpath = "//tr[@class]")
+    private List<WebElement> searchResult;
+
+
+    /**
+     * this method validates if there are search results displayed. Xpath stores then into the List and this method validates if they are displayed through the loop
+     * @author Polina
+     */
+    public void validateSearchResultIsDisplayed(){
+        for (WebElement each : searchResult){
+            assertTrue(each.isDisplayed());
+        }
+    }
+
+    /**
+     * to get the text to validate if month and year were switched
+     * @return text
+     */
     public String getMonthYearText() {
         return monthYearText.getText();
     }

@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         tags = "@receivedPageSearch",
         dryRun = false,              // turn off after it compiles
         plugin = {
-                "pretty",
+                //"pretty",
                 "html:target/html-reports/ui-report.html",
                 "json:target/json-reports/ui-report.json",
                 "rerun:target/rerun.txt"

@@ -23,4 +23,4 @@ Feature: Received Docs filters with two matching results
   And user clicks "Uploaded by" button on "Received Doc" page
   And user clicks "Batch1 Group1" option on "Uploaded by" dropdown
   And user clicks "Search submit" button on "Received doc" page
-  Then user should see message "Your search returned no results. Make sure you search properly" on "Received Doc" page
+  Then user validates that search results are displayed
