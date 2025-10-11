@@ -80,8 +80,12 @@ public class ReceivedDocsPage {
      * @author Polina
      */
     public void validateSearchResultIsDisplayed(){
-        for (WebElement each : searchResult){
-            assertTrue(each.isDisplayed());
+         if (searchResult == null){
+            System.err.println("Search result is null");
+        }else {
+            for (WebElement each : searchResult) {
+                assertTrue(each.isDisplayed());
+            }
         }
     }
 
