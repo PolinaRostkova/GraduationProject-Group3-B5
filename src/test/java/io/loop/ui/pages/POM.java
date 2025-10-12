@@ -4,11 +4,11 @@ public class POM {
 
     private LoginPageDocuport loginPage;
     private BaseDocuportPage baseDocuportPage;
-    private ReceivedDocsPage receivedDocsPage;
     private LeftNavigatePage leftNavigatePage;
+    private Form1099Page form1099Page;
+    private ReceivedDocsPage receivedDocsPage;
     private InvitationsPage invitationsPage;
     private MyUploadsPage myUploadsPage;
-
 
     public LoginPageDocuport getLoginPage() {
         if (loginPage == null){
@@ -16,15 +16,18 @@ public class POM {
         }
         return loginPage;
     }
-
-
     public BaseDocuportPage getBaseDocuportPage() {
         if (baseDocuportPage == null){
             baseDocuportPage = new BaseDocuportPage();
         }
         return baseDocuportPage;
     }
-
+    public Form1099Page getForm1099Page() {
+        if (form1099Page == null){
+            form1099Page = new Form1099Page();
+        }
+        return form1099Page;
+    }
     public ReceivedDocsPage getReceivedDocsPage() {
         if (receivedDocsPage == null){
             receivedDocsPage = new ReceivedDocsPage();
@@ -37,7 +40,6 @@ public class POM {
         }
         return leftNavigatePage;
     }
-
     public InvitationsPage getInvitationsPage() {
         if (invitationsPage == null){
             invitationsPage = new InvitationsPage();
