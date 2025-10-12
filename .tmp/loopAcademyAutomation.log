@@ -1,0 +1,6 @@
+12.10.2025 08:43:42 INFO  Jane_LoginAndLogout:66 - Actual URL MATCHES expected
+12.10.2025 08:43:42 INFO  Jane_LoginAndLogout:49 - Home core UI verified. Button: Received Docs is displayed
+12.10.2025 08:43:42 INFO  Jane_LoginAndLogout:49 - Home core UI verified. Button: My uploads is displayed
+12.10.2025 08:43:42 INFO  Jane_LoginAndLogout:56 - User icon was clicked
+12.10.2025 08:43:42 INFO  Jane_LoginAndLogout:58 - User successfully logged out
+12.10.2025 08:43:42 INFO  Jane_LoginAndLogout:73 - Page was refreshed
