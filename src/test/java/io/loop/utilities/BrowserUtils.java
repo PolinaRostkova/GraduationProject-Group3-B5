@@ -9,6 +9,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -106,6 +109,15 @@ public class BrowserUtils {
         return elemTexts;
     }
 
+    public static WebElement waitForClickable(WebElement element, int timeout) {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
+        try {
+            return wait.until(ExpectedConditions.elementToBeClickable(element));
+        }catch (StaleElementReferenceException e){
+            return wait.until(ExpectedConditions.elementToBeClickable(element));
+        }
+    }
+
     /**
      * Extracts text from list of elements matching the provided locator into new List<String>
      *
@@ -162,7 +174,6 @@ public class BrowserUtils {
 
     /**
      * Waits for provided element to be clickable
-     *
      * @param element
      * @param timeout
      * @return
@@ -170,6 +181,25 @@ public class BrowserUtils {
     public static WebElement waitForClickablility(WebElement element, int timeout) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
         return wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    /**
+     * Waits for provided element to be clickable
+     * @param element
+     * @param timeout
+     * @return
+     * @author veronika
+     */
+    public static WebElement waitForClickable2(WebElement element, int timeout) {
+
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
+        try {
+            System.out.println("try");
+            return wait.until(ExpectedConditions.elementToBeClickable(element));
+        } catch (StaleElementReferenceException e) {
+            System.out.println("catch");
+            return wait.until(ExpectedConditions.elementToBeClickable(element));
+        }
     }
 
     /**
@@ -288,10 +318,10 @@ public class BrowserUtils {
      *
      * @param element
      */
-    public static void clickWithJS(WebElement element) {
-        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
-        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();", element);
-    }
+//    public static void clickWithJS(WebElement element) {
+//        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+//        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();", element);
+//    }
 
 
     /**
@@ -444,4 +474,126 @@ public class BrowserUtils {
 
         select.selectByVisibleText(category);
     }
+
+
+    /**
+     * Scrolls down to the element using Javascript
+     * @param element
+     */
+
+    public static void scrollToElement(WebElement element, Actions actions){
+        ((JavascriptExecutor) Driver.getDriver()).executeAsyncScript("arguments[0].scrollIntoView(true);", element);
+    }
+
+    public static void clickWithJS(WebElement element){
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        try {
+            js.executeScript("arguments[0].scrollIntoView(true);", element);
+            js.executeScript("arguments[0].click();", element);
+        }catch (StaleElementReferenceException e){
+            js.executeScript("arguments[0].click();", element);
+        }
+    }
+
+    public static void uploadFileMac2(String filePath) {
+        // 1) Ensure absolute POSIX-like path
+        String path = new java.io.File(filePath).getAbsolutePath();
+
+        // 2) Put path on clipboard
+        StringSelection selection = new StringSelection(path);
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, null);
+
+        try {
+            Robot robot = new Robot();
+            robot.setAutoWaitForIdle(true);
+
+            // Small helper
+            Runnable shortPause = () -> {
+                try { Thread.sleep(350); } catch (InterruptedException ignored) {}
+            };
+
+            // 3) Give the OS time to open the file chooser (you said it's already open)
+            Thread.sleep(700);
+
+            // 4) Click center to ensure the dialog has focus
+            java.awt.Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+            int cx = screen.width / 2;
+            int cy = screen.height / 2;
+            robot.mouseMove(cx, cy);
+            shortPause.run();
+            robot.mousePress(java.awt.event.InputEvent.BUTTON1_DOWN_MASK);
+            robot.mouseRelease(java.awt.event.InputEvent.BUTTON1_DOWN_MASK);
+            Thread.sleep(400);
+
+            // 5) Open "Go to Folder" (⌘ + ⇧ + G)
+            robot.keyPress(KeyEvent.VK_META);
+            robot.keyPress(KeyEvent.VK_SHIFT);
+            robot.keyPress(KeyEvent.VK_G);
+            robot.keyRelease(KeyEvent.VK_G);
+            robot.keyRelease(KeyEvent.VK_SHIFT);
+            robot.keyRelease(KeyEvent.VK_META);
+
+            Thread.sleep(500);
+
+            // 6) Try paste (⌘ + V)
+            robot.keyPress(KeyEvent.VK_META);
+            robot.keyPress(KeyEvent.VK_V);
+            robot.keyRelease(KeyEvent.VK_V);
+            robot.keyRelease(KeyEvent.VK_META);
+
+            Thread.sleep(250);
+
+            // If paste didn't work (sometimes blocked), type it manually.
+            // You can comment this block out if paste works.
+            if (!clipboardLikelyWorked()) {
+                typeString(robot, path);
+            }
+
+            // 7) Hit Enter to close "Go to Folder"
+            robot.keyPress(KeyEvent.VK_ENTER);
+            robot.keyRelease(KeyEvent.VK_ENTER);
+            Thread.sleep(500);
+
+            // 8) Hit Enter again to confirm the file selection
+            robot.keyPress(KeyEvent.VK_ENTER);
+            robot.keyRelease(KeyEvent.VK_ENTER);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static boolean clipboardLikelyWorked() {
+        // Often you can just return true and rely on paste; keeping hook for debugging.
+        return true;
+    }
+
+    private static void typeString(Robot robot, String s) {
+        for (char c : s.toCharArray()) {
+            typeChar(robot, c);
+            try { Thread.sleep(8); } catch (InterruptedException ignored) {}
+        }
+    }
+
+    private static void typeChar(Robot robot, char c) {
+        // Basic mapping for common path characters on a US layout
+        switch (c) {
+            case '/': robot.keyPress(KeyEvent.VK_SLASH); robot.keyRelease(KeyEvent.VK_SLASH); return;
+            case '-': robot.keyPress(KeyEvent.VK_MINUS); robot.keyRelease(KeyEvent.VK_MINUS); return;
+            case '_': robot.keyPress(KeyEvent.VK_SHIFT); robot.keyPress(KeyEvent.VK_MINUS);
+                robot.keyRelease(KeyEvent.VK_MINUS); robot.keyRelease(KeyEvent.VK_SHIFT); return;
+            case '.': robot.keyPress(KeyEvent.VK_PERIOD); robot.keyRelease(KeyEvent.VK_PERIOD); return;
+            case ' ': robot.keyPress(KeyEvent.VK_SPACE); robot.keyRelease(KeyEvent.VK_SPACE); return;
+            default:
+                boolean upper = Character.isUpperCase(c);
+                int code = KeyEvent.getExtendedKeyCodeForChar(Character.toUpperCase(c));
+                if (code == KeyEvent.VK_UNDEFINED) return;
+                if (upper) robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(code);
+                robot.keyRelease(code);
+                if (upper) robot.keyRelease(KeyEvent.VK_SHIFT);
+        }
+    }
+
+
 }

@@ -1,4 +1,5 @@
 package io.loop.ui.UI_step_defs;
+
 import io.cucumber.java.en.*;
 import io.loop.ui.pages.LoginPageDocuport;
 import io.loop.ui.pages.POM;
@@ -16,22 +17,21 @@ import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
-public class LoginDocuport {
+public class LoginDocuportStepDefs {
 
     POM pages = new POM();
     LoginPageDocuport loginPageDocuport = new LoginPageDocuport();
 
     @Given("user is on Docuport login page")
     public void user_is_on_docuport_login_page() {
-        Driver.getDriver().get(ConfigurationReader.getProperty("docuportBETA"));
+        Driver.getDriver().get(DocuportConstants.DOCUPORT_TEST);
 
     }
 
-    @When("user enters username for {}")
+    @When("user is logged in for {}")
     public void user_enters_username_for_role(String roleUsername) throws InterruptedException {
         BrowserUtils.waitForClickablility(loginPageDocuport.usernameInput, 10);
-        assertTrue(loginPageDocuport.loginButton.isDisplayed());
-        loginPageDocuport.usernameInput.sendKeys(enterUsername(roleUsername));
+        loginPageDocuport.loginDocuport(roleUsername);
 
     }
 

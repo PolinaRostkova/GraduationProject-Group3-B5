@@ -25,13 +25,13 @@ public class Halina_ui_LeftNavigate_stepDefs {
 
     @Then("user validates {string} from menu for role")
     public void userValidatesFromMenuForRole(String role) {
-        pages.getHalina_LeftModuleNavigatePage().validateMenuItems(role);
+        pages.getLeftNavigatePage().validateMenuItems(role);
         LOG.info("Expected modules = Actual modules for : " + role);
     }
 
     @And("user clicks and validates all modules for {string}")
     public void userClicksAndValidatesAllModulesFor(String role) {
-        pages.getHalina_LeftModuleNavigatePage().clickAndValidateModulesForRole(role);
+        pages.getLeftNavigatePage().clickAndValidateModulesForRole(role);
         Driver.closeDriver();
     }
 }

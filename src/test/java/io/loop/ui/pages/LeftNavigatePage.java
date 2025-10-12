@@ -1,31 +1,30 @@
 package io.loop.ui.pages;
+
 import io.loop.utilities.BrowserUtils;
 import io.loop.utilities.DocuportConstants;
 import io.loop.utilities.Driver;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import java.time.Duration;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
-public class Halina_LeftModuleNavigatePage {
-    public Halina_LeftModuleNavigatePage() {
+/**
+ * this is a page for Left Navigate info
+ * @author veronika
+ */
+
+public class LeftNavigatePage {
+    public LeftNavigatePage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
-
     POM pages = new POM();
-    private static final Logger LOG = LogManager.getLogger();
-    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
 
-
-    @FindBy(xpath = "//div[@class='v-list-item__title']")
-    public List<WebElement> modulesForEachRole;
 
     @FindBy(xpath = "//span[contains(text(),'Upload')]")
     public WebElement uploadButton;
@@ -33,36 +32,40 @@ public class Halina_LeftModuleNavigatePage {
     @FindBy(xpath = "//a[@href='/clients']")
     public WebElement clientsButton;
 
-    @FindBy(xpath = "//span[text()='Home']")
+    @FindBy(xpath = "//a[@href='/leads']")
+    public WebElement leadsButton;
+
+    @FindBy(xpath = "//a[@href='/users']")
+    public WebElement usersButton;
+
+    @FindBy(xpath = "//span[contains(text(),'Home')]")
     public WebElement homeButton;
 
     @FindBy(xpath = "//span[contains(text(),'Received')]")
     public WebElement receivedDocsButton;
 
-    @FindBy(xpath = "//span[text()='My uploads']")
-    public WebElement myUploadsButton;
+    @FindBy(xpath = "//span[contains(text(),'My uploads')]")
+    public WebElement myUploads;
 
     @FindBy(xpath = "//span[contains(text(),'Invitations')]")
     public WebElement invitationsButton;
 
-    @FindBy(xpath = "//a[@href='/users']")
-    public WebElement usersButton;
-
-    @FindBy(xpath = "//a[@href='/leads']")
-    public WebElement leadsButton;
-
-    @FindBy(xpath = "//a[@href='/1099-form']")
-    public WebElement form1099Button;
 
     @FindBy(xpath = "//a[@href='/bookkeeping']")
     public WebElement bookkeepingButton;
 
-    @FindBy(xpath = "//a[@href='/reconciliations']")
-    public WebElement reconciliationsButton;
+    @FindBy(xpath = "//span[contains(text(),'1099 Form')]")
+    public WebElement form1099;
+
+    @FindBy(xpath = "//span[contains(text(),'Reconciliations')]")
+    public WebElement reconciliations;
 
     @FindBy(xpath = "//a[contains(text(),'Terms')]")
     public WebElement termsAndConditionsButton;
 
+
+    @FindBy(xpath = "//div[@class='v-list-item__title']")
+    public List<WebElement> modulesForEachRole;
 
     // Expected modules names for each role
     List<String> expectedModulesClient = List.of("Home", "Received docs", "My uploads", "Invitations", "1099 Form", "Reconciliations");
@@ -70,6 +73,39 @@ public class Halina_LeftModuleNavigatePage {
     List<String> expectedModulesSupervisor = List.of("Home", "Received docs", "My uploads", "Clients", "Users", "Leads", "Bookkeeping", "1099 Form", "Reconciliations");
     List<String> expectedModulesEmployee = List.of("Home", "Received docs", "My uploads", "Clients", "Users", "Bookkeeping", "1099 Form", "Reconciliations");
 
+
+    /**
+     * this is for clicking the passed button
+     * @param button
+     * @author veronika
+     * @author polina
+     */
+    public void clickButton(String button) {
+        switch (button.toLowerCase().trim()) {
+            case "home" -> {
+                BrowserUtils.waitForClickable2(homeButton, DocuportConstants.LARGE);
+                try {
+                    System.out.println("try");
+                    homeButton.click();
+                } catch (StaleElementReferenceException e) {
+                    System.out.println("catch");
+                    homeButton.click();
+                }
+            }
+            case "upload" -> BrowserUtils.waitForClickable(uploadButton, DocuportConstants.LARGE).click();
+            case "received doc" ->  BrowserUtils.waitForClickable(receivedDocsButton, DocuportConstants.LARGE).click();
+            case "invitations" ->   BrowserUtils.waitForClickable(invitationsButton, DocuportConstants.LARGE).click();
+            case "terms and conditions" -> BrowserUtils.waitForClickable(termsAndConditionsButton, DocuportConstants.LARGE).click();
+            case "my uploads" ->  BrowserUtils.waitForClickable(myUploads, DocuportConstants.LARGE).click();
+            case "1099 form" -> BrowserUtils.waitForClickablility(form1099, DocuportConstants.LARGE).click();
+            default -> throw new IllegalArgumentException("Button " + button + " not found");
+        }
+    }
+
+    public void clickMenuItem(String itemName) {
+        WebElement button = Driver.getDriver().findElement(By.xpath("//span[@class='body-1' and .='"+itemName+"']"));
+        button.click();
+    }
 
 
     /**
@@ -106,7 +142,7 @@ public class Halina_LeftModuleNavigatePage {
         List<String> expected = getExpectedModules(role);
         List<String> actual = getActualMenuItems();
         assertEquals(expected, actual);
-        }
+    }
 
 
     /**
@@ -145,10 +181,10 @@ public class Halina_LeftModuleNavigatePage {
             }
             case "upload" ->  BrowserUtils.waitForClickablility(uploadButton, DocuportConstants.LARGE).click();
             case "received docs" -> BrowserUtils.waitForClickablility(receivedDocsButton, DocuportConstants.LARGE).click();
-            case "my uploads" -> BrowserUtils.waitForClickablility(myUploadsButton, DocuportConstants.LARGE).click();
+            case "my uploads" -> BrowserUtils.waitForClickablility(myUploads, DocuportConstants.LARGE).click();
             case "invitations" -> BrowserUtils.waitForClickablility(invitationsButton, DocuportConstants.LARGE).click();
-            case "1099 form" -> BrowserUtils.waitForClickablility(form1099Button, DocuportConstants.LARGE).click();
-            case "reconciliations" -> BrowserUtils.waitForClickablility(reconciliationsButton, DocuportConstants.LARGE).click();
+            case "1099 form" -> BrowserUtils.waitForClickablility(form1099, DocuportConstants.LARGE).click();
+            case "reconciliations" -> BrowserUtils.waitForClickablility(reconciliations, DocuportConstants.LARGE).click();
             case "users" -> BrowserUtils.waitForClickablility(usersButton, DocuportConstants.LARGE).click();
             case "leads" -> BrowserUtils.waitForClickablility(leadsButton, DocuportConstants.LARGE).click();
             case "bookkeeping" -> BrowserUtils.waitForClickablility(bookkeepingButton, DocuportConstants.LARGE).click();
@@ -157,6 +193,4 @@ public class Halina_LeftModuleNavigatePage {
             default -> throw new IllegalArgumentException("Not such a button: " + button);
         }
     }
-    }
-
-
+}

@@ -1,2 +1,7 @@
+11.10.2025 17:44:54 INFO  DocuportSampleStepDefs:75 - Previous month was clicked on the Upload date
+11.10.2025 17:44:54 INFO  DocuportSampleStepDefs:75 - 9-25-25 was clicked on the Upload date
+11.10.2025 17:44:54 INFO  DocuportSampleStepDefs:52 - Uploaded by button was clicked on the Received Doc page
+11.10.2025 17:44:55 INFO  DocuportSampleStepDefs:79 - Batch1 Group1 was clicked on the Uploaded by
+11.10.2025 17:44:55 INFO  DocuportSampleStepDefs:52 - Search submit button was clicked on the Received doc page
 11.10.2025 20:38:59 INFO  Halina_ui_LeftNavigate_stepDefs:23 - client logged in
 11.10.2025 20:38:59 INFO  Halina_ui_LeftNavigate_stepDefs:29 - Expected modules = Actual modules for : client
