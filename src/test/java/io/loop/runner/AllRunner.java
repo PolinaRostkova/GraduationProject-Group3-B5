@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
                 "rerun:target/rerun.txt",
                // "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
         },
-        monochrome = false,
+        monochrome = true,
         publish = false
 )
 public class AllRunner {

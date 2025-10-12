@@ -444,22 +444,4 @@ public class BrowserUtil {
 
         select.selectByVisibleText(category);
     }
-
-
-
-    /**
-     * Clicks on element using javaScript with try catch block
-     * @param element
-     * @author jp
-     */
-    public static void clickWithJSWithTryCatch(WebElement element){
-        try {
-            new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(DocuportConstants.LARGE));
-            ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
-            ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();", element);
-        } catch (StaleElementReferenceException se) {
-            ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();", element);
-        }
-    }
-
 }
