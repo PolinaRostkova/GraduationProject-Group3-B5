@@ -80,6 +80,7 @@ public class ReceivedDocsPage {
      * @author Polina
      */
     public void validateSearchResultIsDisplayed(){
+        BrowserUtils.waitFor(2);
          if (searchResult == null){
             System.err.println("Search result is null");
         }else {
