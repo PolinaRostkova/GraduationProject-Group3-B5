@@ -2,7 +2,7 @@ package io.loop.utilities;
 
 public class TestExcelFile {
     public static void main(String[] args) {
-        ExcelUtils excelUtils = new ExcelUtils("/Users/Polina/IdeaProjects/cucumber-project-B5/src/test/resources/Book1.xlsx", "Sheet1");
+        ExcelUtils excelUtils = new ExcelUtils("/Users/Polina/IdeaProjects/cucumber-project-B5/src/halina_ui_left_navigate.feature/resources/Book1.xlsx", "Sheet1");
 
         System.out.println(excelUtils.getCellData(0, 0));
         System.out.println(excelUtils.getCellData(0, 1));

@@ -1,5 +1,6 @@
 package io.loop.ui.pages;
 
+import io.loop.utilities.BrowserUtils;
 import io.loop.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -22,7 +23,7 @@ WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10
         return menuItem.getText();
     }
 
-    public void clickMenuItem(String itemName) {
+    public void clickMenuItem(String itemName)  {
         WebElement button = Driver.getDriver().findElement(By.xpath("//span[@class='body-1' and .='"+itemName+"']"));
         button.click();
     }
@@ -32,6 +33,6 @@ WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10
     }
 
     public WebElement getHeaderTextFromModules(String moduleName) {
-        return Driver.getDriver().findElement(By.xpath("//h1[.='" + moduleName + "']"));
+        return Driver.getDriver().findElement(By.xpath("//span[.='" + moduleName + "']")); // Halina: update xpath to //span (instead of h1)
     }
 }

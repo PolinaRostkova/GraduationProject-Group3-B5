@@ -4,6 +4,7 @@ import io.cucumber.java.en.*;
 import io.loop.ui.pages.LoginPageDocuport;
 import io.loop.ui.pages.POM;
 import io.loop.utilities.BrowserUtils;
+import io.loop.utilities.ConfigurationReader;
 import io.loop.utilities.DocuportConstants;
 import io.loop.utilities.Driver;
 import org.openqa.selenium.By;
@@ -34,6 +35,17 @@ public class LoginDocuportStepDefs {
 
     }
 
+
+    @And("user enters password for needed role")
+    public void user_enters_password_for_client() {
+        loginPageDocuport.passwordInput.sendKeys(DocuportConstants.PASSWORD);
+    }
+
+
+    @And("user clicks login button")
+    public void user_clicks_login_button() throws InterruptedException {
+        loginPageDocuport.loginButton.click();
+    }
 
 
     @Then("user should be able to see the home page for {}")

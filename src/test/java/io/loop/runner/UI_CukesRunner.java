@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "classpath:features/ui",
         glue = "io.loop",           // or "io.loop.ui" only for UI
-        tags = "@ui",
+        tags = "@left_navigation",
         dryRun = false,              // turn off after it compiles
         plugin = {
                 //"pretty",
