@@ -1,7 +1,6 @@
 package io.loop.ui.UI_step_defs;
 
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import io.loop.ui.pages.POM;
 import io.loop.utilities.BrowserUtils;
 import io.loop.utilities.DocuportConstants;
@@ -14,34 +13,6 @@ public class Veronika_ui_addNewContractor_stepDefs {
     private static final Logger LOG = LogManager.getLogger();
     POM pages = new POM();
 
-    @When("user inserts {string} to {string} field on {string} page")
-    public void user_inserts_to_field_on_page(String input, String field, String page) {
-        switch (page.toLowerCase().trim()) {
-            case "login" -> {
-                pages.getLoginPage().insertField(field, input);
-                LOG.info(input + " - was successfully sent to - " + field);
-            }
-        }
-    }
-
-    @When("user clicks {string} button on {string} page")
-    public void user_clicks_button_on_page(String button, String page) throws InterruptedException {
-        switch (page.toLowerCase().trim()) {
-            case "login", "choose account" -> {
-                pages.getLoginPage().clickButton(button);
-                LOG.info(button + " - was successfully clicked");
-            }
-            case "left navigate" -> {
-                pages.getLeftNavigatePage().clickButton(button);
-                LOG.info(button + " - was successfully clicked");
-            }
-            case "1099 form" -> {
-                pages.getForm1099Page().clickButton(button);
-                LOG.info(button + " - was successfully clicked");
-            }
-            default -> throw new IllegalArgumentException("No such a page: " + page);
-        }
-    }
 
     @Then("user adds new contractor")
     public void user_adds_new_contractor() {
