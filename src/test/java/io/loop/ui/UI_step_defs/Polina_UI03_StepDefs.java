@@ -60,6 +60,10 @@ public class Polina_UI03_StepDefs {
                 pages.getInvitationsPage().clickButton(button);
                 LOGGER.info(button + " button was clicked on the " + page + " page");
             }
+            case "1099 form" -> {
+                pages.getForm1099Page().clickButton(button);
+                LOGGER.info(button + " - was successfully clicked");
+            }
             default -> throw new IllegalArgumentException("No such a page: " + page);
         }
     }
