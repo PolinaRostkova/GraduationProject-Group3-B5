@@ -1,6 +1,7 @@
 package io.loop.ui.pages;
 
 import io.loop.utilities.BrowserUtils;
+import io.loop.utilities.BrowserUtils;
 import io.loop.utilities.DocuportConstants;
 import io.loop.utilities.Driver;
 import org.openqa.selenium.WebElement;

@@ -3,7 +3,7 @@ package io.loop.utilities;
 public class DocuportConstants {
 
     // url for the test env
-    public static final String DOCUPORT_TEST = "https://beta.docuport.app";
+    public static final String DOCUPORT_TEST = ConfigurationReader.getProperty("docuportBETA");
     public static final String EXPECTED_LOGO = "Docuport";
     public static final String EXPECTED_RESET_PASSWORD_HEADING = "Reset password";
 
