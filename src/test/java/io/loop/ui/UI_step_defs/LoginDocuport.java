@@ -1,9 +1,8 @@
 package io.loop.ui.UI_step_defs;
-
 import io.cucumber.java.en.*;
 import io.loop.ui.pages.LoginPageDocuport;
 import io.loop.ui.pages.POM;
-import io.loop.utilities.BrowserUtil;
+import io.loop.utilities.BrowserUtils;
 import io.loop.utilities.ConfigurationReader;
 import io.loop.utilities.DocuportConstants;
 import io.loop.utilities.Driver;
@@ -30,7 +29,7 @@ public class LoginDocuport {
 
     @When("user enters username for {}")
     public void user_enters_username_for_role(String roleUsername) throws InterruptedException {
-        BrowserUtil.waitForClickablility(loginPageDocuport.usernameInput, 10);
+        BrowserUtils.waitForClickablility(loginPageDocuport.usernameInput, 10);
         assertTrue(loginPageDocuport.loginButton.isDisplayed());
         loginPageDocuport.usernameInput.sendKeys(enterUsername(roleUsername));
 
@@ -57,7 +56,7 @@ public class LoginDocuport {
             new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(3)).until(ExpectedConditions.elementToBeClickable(matches.getFirst())).click();
         }
 
-        assertTrue("User didn't login and can't see the home page", BrowserUtil.waitForVisibility(loginPageDocuport.docuportImage, 10).isDisplayed());
+        assertTrue("User didn't login and can't see the home page", BrowserUtils.waitForVisibility(loginPageDocuport.docuportImage, 10).isDisplayed());
     }
 
 

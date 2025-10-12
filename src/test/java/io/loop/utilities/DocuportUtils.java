@@ -9,7 +9,7 @@ import java.time.Duration;
 public class DocuportUtils {
     /**
      * logins to docuport app
-     * @param driver, which is initialized in the test base
+     * @param driver, which is initialized in the halina_ui_left_navigate.feature base
      * @param role, comes from docuport constants
      * author PolinaRostkova
      */

@@ -10,7 +10,7 @@ Feature: Docuport login and logout feature
     When user enters username for "<roleUsername>"
     And user enters password for needed role
     And user clicks login button
-    Then user should be able to see the home page for <role>
+    Then user should be able to see the home page for "<role>"
 
     Examples:
       | roleUsername              | role       |

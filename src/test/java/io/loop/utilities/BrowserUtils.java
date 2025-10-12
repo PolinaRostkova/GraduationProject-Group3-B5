@@ -15,7 +15,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
-public class BrowserUtil {
+public class BrowserUtils {
 
     public static Scenario myScenario;
 

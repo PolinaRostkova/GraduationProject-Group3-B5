@@ -3,7 +3,8 @@ package io.loop.hooks;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import io.loop.utilities.BrowserUtil;
+import io.loop.utilities.BrowserUtils;
+import io.loop.utilities.BrowserUtils;
 import io.loop.utilities.ConfigurationReader;
 import io.loop.utilities.DB_Utility;
 import io.loop.utilities.Driver;
@@ -16,7 +17,7 @@ public class Hook {
     @Before("@ui")
     public void setUp(Scenario scenario) {
         Driver.getDriver();
-        BrowserUtil.myScenario = scenario;
+        BrowserUtils.myScenario = scenario;
         Driver.getDriver().get(ConfigurationReader.getProperty("docuportBETA"));
     }
 
@@ -28,7 +29,7 @@ public class Hook {
             scenario.attach(screenshot, "image/png", scenario.getName());
         }
 
-        Driver.closeDriver();
+       // Driver.closeDriver();
     }
 
     @Before("@db")
