@@ -1,5 +1,6 @@
-12.10.2025 15:32:39 INFO  Veronika_ui_addNewContractor_stepDefs:72 - Massachusetts - was successfully sent to - State
-12.10.2025 15:32:39 INFO  Veronika_ui_addNewContractor_stepDefs:58 - 57919 - was successfully sent to - Zip code
-12.10.2025 15:32:39 INFO  Veronika_ui_addNewContractor_stepDefs:58 - 79.00 - was successfully sent to - Total payment
-12.10.2025 15:32:39 INFO  Polina_UI03_StepDefs:65 - save - was successfully clicked
-12.10.2025 15:32:39 INFO  Veronika_ui_addNewContractor_stepDefs:81 - contractorLuna Siera - is displayed
+12.10.2025 18:05:33 INFO  Jane_UI01_LoginAndLogOut_stepDefs:66 - Actual URL MATCHES expected
+12.10.2025 18:05:33 INFO  Jane_UI01_LoginAndLogOut_stepDefs:49 - Home core UI verified. Button: Received Docs is displayed
+12.10.2025 18:05:33 INFO  Jane_UI01_LoginAndLogOut_stepDefs:49 - Home core UI verified. Button: My uploads is displayed
+12.10.2025 18:05:33 INFO  Jane_UI01_LoginAndLogOut_stepDefs:56 - User icon was clicked
+12.10.2025 18:05:33 INFO  Jane_UI01_LoginAndLogOut_stepDefs:58 - User successfully logged out
+12.10.2025 18:05:33 INFO  Jane_UI01_LoginAndLogOut_stepDefs:73 - Page was refreshed
