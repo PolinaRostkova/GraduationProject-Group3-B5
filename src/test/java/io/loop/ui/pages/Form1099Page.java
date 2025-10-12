@@ -1,6 +1,6 @@
 package io.loop.ui.pages;
 
-import io.loop.utilities.BrowserUtil;
+import io.loop.utilities.BrowserUtils;
 import io.loop.utilities.DocuportConstants;
 import io.loop.utilities.Driver;
 import org.openqa.selenium.WebElement;
@@ -69,14 +69,14 @@ public class Form1099Page {
      */
     public void insertField (String field, String input) {
         switch (field.toLowerCase().trim()) {
-            case "first name" -> BrowserUtil.waitForVisibility(firstNameInput, DocuportConstants.LARGE).sendKeys(input);
-            case "last name" -> BrowserUtil.waitForVisibility(lastNameInput, DocuportConstants.LARGE).sendKeys(input);
-            case "ssn or tin" -> BrowserUtil.waitForVisibility(ssnTinInput, DocuportConstants.LARGE).sendKeys(input);
-            case "street address" -> BrowserUtil.waitForVisibility(streetAddressInput, DocuportConstants.LARGE).sendKeys(input);
-            case "address (apt/suit)" -> BrowserUtil.waitForVisibility(addressInput, DocuportConstants.LARGE).sendKeys(input);
-            case "city" -> BrowserUtil.waitForVisibility(cityInput, DocuportConstants.LARGE).sendKeys(input);
-            case "zip code" -> BrowserUtil.waitForVisibility(zipCodeInput, DocuportConstants.LARGE).sendKeys(input);
-            case "total payment" -> BrowserUtil.waitForVisibility(totalPaymentOption, DocuportConstants.LARGE).sendKeys(input);
+            case "first name" -> BrowserUtils.waitForVisibility(firstNameInput, DocuportConstants.LARGE).sendKeys(input);
+            case "last name" -> BrowserUtils.waitForVisibility(lastNameInput, DocuportConstants.LARGE).sendKeys(input);
+            case "ssn or tin" -> BrowserUtils.waitForVisibility(ssnTinInput, DocuportConstants.LARGE).sendKeys(input);
+            case "street address" -> BrowserUtils.waitForVisibility(streetAddressInput, DocuportConstants.LARGE).sendKeys(input);
+            case "address (apt/suit)" -> BrowserUtils.waitForVisibility(addressInput, DocuportConstants.LARGE).sendKeys(input);
+            case "city" -> BrowserUtils.waitForVisibility(cityInput, DocuportConstants.LARGE).sendKeys(input);
+            case "zip code" -> BrowserUtils.waitForVisibility(zipCodeInput, DocuportConstants.LARGE).sendKeys(input);
+            case "total payment" -> BrowserUtils.waitForVisibility(totalPaymentOption, DocuportConstants.LARGE).sendKeys(input);
             default -> throw new IllegalArgumentException("No such a field: " + field);
         }
     }
@@ -89,7 +89,7 @@ public class Form1099Page {
      */
     public void clickButton(String button) throws InterruptedException {
         switch (button.toLowerCase().trim()) {
-            case "save" -> BrowserUtil.waitForClickablility(saveButton, DocuportConstants.LARGE).click();
+            case "save" -> BrowserUtils.waitForClickablility(saveButton, DocuportConstants.LARGE).click();
         }
     }
 
