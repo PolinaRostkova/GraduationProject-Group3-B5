@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "classpath:features/ui",
-        glue = "io.loop.ui",           // or "io.loop.ui" only for UI
+        glue = "io.loop.",           // or "io.loop.ui" only for UI
         tags = "@ui",
         dryRun = true,              // turn off after it compiles
         plugin = {
