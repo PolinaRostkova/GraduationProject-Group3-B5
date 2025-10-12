@@ -1,6 +1,6 @@
 package io.loop.ui.pages;
 
-import io.loop.utilities.BrowserUtil;
+import io.loop.utilities.BrowserUtils;
 import io.loop.utilities.DocuportConstants;
 import io.loop.utilities.Driver;
 import org.openqa.selenium.By;
@@ -36,7 +36,7 @@ public class LoginPageDocuport extends BaseDocuportPage{
     public WebElement docuportImage;
 
     public  void loginDocuport(String role) throws InterruptedException {
-        switch (role.toLowerCase()){
+        switch (role.toLowerCase().trim()){
             case "advisor" -> {
                 usernameInput.sendKeys(DocuportConstants.USERNAME_ADVISOR);
                 passwordInput.sendKeys(DocuportConstants.PASSWORD);
@@ -73,7 +73,6 @@ public class LoginPageDocuport extends BaseDocuportPage{
             case "advisor" -> DocuportConstants.USERNAME_ADVISOR;
             default -> throw new IllegalArgumentException("Invalid username: " + username.toLowerCase());
         };
-
     }
 
     /**
@@ -84,8 +83,8 @@ public class LoginPageDocuport extends BaseDocuportPage{
      */
     public void insertField (String field, String input) {
         switch (field.toLowerCase().trim()) {
-            case "username" -> BrowserUtil.waitForVisibility(usernameInput, DocuportConstants.LARGE).sendKeys(input);
-            case "password" -> BrowserUtil.waitForVisibility(passwordInput, DocuportConstants.LARGE).sendKeys(input);
+            case "username" -> BrowserUtils.waitForVisibility(usernameInput, DocuportConstants.LARGE).sendKeys(input);
+            case "password" -> BrowserUtils.waitForVisibility(passwordInput, DocuportConstants.LARGE).sendKeys(input);
             default -> throw new IllegalArgumentException("No such a field: " + field);
         }
     }
@@ -97,14 +96,14 @@ public class LoginPageDocuport extends BaseDocuportPage{
      */
     public void clickButton (String button) throws InterruptedException {
         switch (button.toLowerCase().trim()){
-            case "login" -> BrowserUtil.waitForClickablility(loginButton, DocuportConstants.LARGE).click();
+            case "login" -> BrowserUtils.waitForClickablility(loginButton, DocuportConstants.LARGE).click();
             case "continue" -> {
                 try {
-                    BrowserUtil.waitForClickablility(continueButton, DocuportConstants.LARGE).click();
+                    BrowserUtils.waitForClickablility(continueButton, DocuportConstants.LARGE).click();
                 } catch (StaleElementReferenceException e){
                     Thread.sleep(3000);
                     WebElement element = Driver.getDriver().findElement(By.xpath("//span[.=' Continue ']"));
-                    BrowserUtil.waitForClickablility(element, DocuportConstants.LARGE).click();
+                    BrowserUtils.waitForClickablility(element, DocuportConstants.LARGE).click();
                 }
             }
             default -> throw new IllegalArgumentException("Not such a button: " + button);

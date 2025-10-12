@@ -3,8 +3,7 @@ package io.loop.ui.UI_step_defs;
 import io.cucumber.java.en.*;
 import io.loop.ui.pages.LoginPageDocuport;
 import io.loop.ui.pages.POM;
-import io.loop.utilities.BrowserUtil;
-import io.loop.utilities.ConfigurationReader;
+import io.loop.utilities.BrowserUtils;
 import io.loop.utilities.DocuportConstants;
 import io.loop.utilities.Driver;
 import org.openqa.selenium.By;
@@ -17,36 +16,24 @@ import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
-public class LoginDocuport {
+public class LoginDocuportStepDefs {
 
     POM pages = new POM();
     LoginPageDocuport loginPageDocuport = new LoginPageDocuport();
 
     @Given("user is on Docuport login page")
     public void user_is_on_docuport_login_page() {
-        Driver.getDriver().get(ConfigurationReader.getProperty("docuportBETA"));
+        Driver.getDriver().get(DocuportConstants.DOCUPORT_TEST);
 
     }
 
-    @When("user enters username for {}")
+    @When("user is logged in for {}")
     public void user_enters_username_for_role(String roleUsername) throws InterruptedException {
-        BrowserUtil.waitForClickablility(loginPageDocuport.usernameInput, 10);
-        assertTrue(loginPageDocuport.loginButton.isDisplayed());
-        loginPageDocuport.usernameInput.sendKeys(enterUsername(roleUsername));
+        BrowserUtils.waitForClickablility(loginPageDocuport.usernameInput, 10);
+        loginPageDocuport.loginDocuport(roleUsername);
 
     }
 
-
-    @And("user enters password for needed role")
-    public void user_enters_password_for_client() {
-        loginPageDocuport.passwordInput.sendKeys(DocuportConstants.PASSWORD);
-    }
-
-
-    @And("user clicks login button")
-    public void user_clicks_login_button() throws InterruptedException {
-        loginPageDocuport.loginButton.click();
-    }
 
 
     @Then("user should be able to see the home page for {}")
@@ -57,7 +44,7 @@ public class LoginDocuport {
             new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(3)).until(ExpectedConditions.elementToBeClickable(matches.getFirst())).click();
         }
 
-        assertTrue("User didn't login and can't see the home page", BrowserUtil.waitForVisibility(loginPageDocuport.docuportImage, 10).isDisplayed());
+        assertTrue("User didn't login and can't see the home page", BrowserUtils.waitForVisibility(loginPageDocuport.docuportImage, 10).isDisplayed());
     }
 
 

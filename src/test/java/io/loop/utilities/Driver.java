@@ -30,9 +30,19 @@ public class Driver {
 
     public static WebDriver getDriver() {
         if (driverPool.get() == null) {
-            String browserType = ConfigurationReader.getProperty("browser");
+
+            // Read from -Dbrowser, then BROWSER env, else default to chrome
+            String browserType = System.getProperty("browser");
+            if (browserType == null || browserType.isBlank()) {
+                browserType = System.getenv("BROWSER");
+            }
+            if (browserType == null || browserType.isBlank()) {
+                browserType = "chrome";
+            }
+            browserType = browserType.trim().toLowerCase();
+
             ChromeOptions options = new ChromeOptions();
-            switch (browserType.toLowerCase()) {
+            switch (browserType) {
                 case "chrome" -> {
                     options.addArguments("--disable-blink-features=AutomationControlled");
                     driverPool.set(new ChromeDriver(options));
@@ -41,7 +51,11 @@ public class Driver {
                 case "safari" -> driverPool.set(new SafariDriver());
                 case "headless" -> {
                     options.addArguments("--disable-blink-features=AutomationControlled");
-                    options.addArguments("--headless");
+                    options.addArguments("--headless"); // kept exactly as you had it
+                    driverPool.set(new ChromeDriver(options));
+                }
+                default -> { // unknown value -> default to chrome
+                    options.addArguments("--disable-blink-features=AutomationControlled");
                     driverPool.set(new ChromeDriver(options));
                 }
             }

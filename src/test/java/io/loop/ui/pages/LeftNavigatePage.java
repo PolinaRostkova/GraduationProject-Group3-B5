@@ -1,9 +1,10 @@
 package io.loop.ui.pages;
 
-import io.loop.utilities.BrowserUtil;
+import io.loop.utilities.BrowserUtils;
 import io.loop.utilities.DocuportConstants;
 import io.loop.utilities.Driver;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -14,8 +15,7 @@ import org.openqa.selenium.support.PageFactory;
  */
 
 public class LeftNavigatePage {
-
-    public LeftNavigatePage () {
+    public LeftNavigatePage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
@@ -43,16 +43,16 @@ public class LeftNavigatePage {
     @FindBy(xpath = "//a[contains(text(),'Terms')]")
     public WebElement termsAndConditionsButton;
 
-
     /**
      * this is for clicking the passed button
      * @param button
      * @author veronika
+     * @author polina
      */
-    public void clickButton(String button) throws InterruptedException {
+    public void clickButton(String button) {
         switch (button.toLowerCase().trim()) {
             case "home" -> {
-                BrowserUtil.waitForClickable2(homeButton, DocuportConstants.LARGE);
+                BrowserUtils.waitForClickable2(homeButton, DocuportConstants.LARGE);
                 try {
                     System.out.println("try");
                     homeButton.click();
@@ -61,8 +61,18 @@ public class LeftNavigatePage {
                     homeButton.click();
                 }
             }
-            case "1099 form" -> BrowserUtil.waitForClickablility(form1099, DocuportConstants.LARGE).click();
+            case "upload" -> BrowserUtils.waitForClickable(uploadButton, DocuportConstants.LARGE).click();
+            case "received doc" ->  BrowserUtils.waitForClickable(receivedDocsButton, DocuportConstants.LARGE).click();
+            case "invitations" ->   BrowserUtils.waitForClickable(invitationsButton, DocuportConstants.LARGE).click();
+            case "terms and conditions" -> BrowserUtils.waitForClickable(termsAndConditionsButton, DocuportConstants.LARGE).click();
+            case "my uploads" ->  BrowserUtils.waitForClickable(myUploads, DocuportConstants.LARGE).click();
+            case "1099 form" -> BrowserUtils.waitForClickablility(form1099, DocuportConstants.LARGE).click();
+            default -> throw new IllegalArgumentException("Button " + button + " not found");
         }
     }
-}
 
+    public void clickMenuItem(String itemName) {
+        WebElement button = Driver.getDriver().findElement(By.xpath("//span[@class='body-1' and .='"+itemName+"']"));
+        button.click();
+    }
+}
