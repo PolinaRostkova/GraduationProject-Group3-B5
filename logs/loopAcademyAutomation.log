@@ -1,6 +1,2 @@
-12.10.2025 18:05:33 INFO  Jane_UI01_LoginAndLogOut_stepDefs:66 - Actual URL MATCHES expected
-12.10.2025 18:05:33 INFO  Jane_UI01_LoginAndLogOut_stepDefs:49 - Home core UI verified. Button: Received Docs is displayed
-12.10.2025 18:05:33 INFO  Jane_UI01_LoginAndLogOut_stepDefs:49 - Home core UI verified. Button: My uploads is displayed
-12.10.2025 18:05:33 INFO  Jane_UI01_LoginAndLogOut_stepDefs:56 - User icon was clicked
-12.10.2025 18:05:33 INFO  Jane_UI01_LoginAndLogOut_stepDefs:58 - User successfully logged out
-12.10.2025 18:05:33 INFO  Jane_UI01_LoginAndLogOut_stepDefs:73 - Page was refreshed
+11.10.2025 22:42:53 INFO  Halina_ui_LeftNavigate_stepDefs:23 - client logged in
+11.10.2025 22:42:53 INFO  Halina_ui_LeftNavigate_stepDefs:29 - Expected modules = Actual modules for : client

@@ -17,6 +17,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * this is a page for Left Navigate info
  * @author veronika
+ * @author halina
  */
 
 public class LeftNavigatePage {
@@ -169,6 +170,10 @@ public class LeftNavigatePage {
         }
     }
 
+    /**
+     * Clicks each module for the given role
+     * author HalinaBartasevich
+     */
 
     public void clickEachModule(String button) {
         switch (button.toLowerCase().trim()){
