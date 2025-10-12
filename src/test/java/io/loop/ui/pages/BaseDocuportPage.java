@@ -33,6 +33,6 @@ WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10
     }
 
     public WebElement getHeaderTextFromModules(String moduleName) {
-        return Driver.getDriver().findElement(By.xpath("//span[.='" + moduleName + "']")); // Halina: update xpath to //span (instead of h1)
+        return Driver.getDriver().findElement(By.xpath("//span[.='" + moduleName + "']"));
     }
 }

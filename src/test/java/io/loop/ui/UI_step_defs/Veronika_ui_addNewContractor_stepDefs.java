@@ -3,7 +3,7 @@ package io.loop.ui.UI_step_defs;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.loop.ui.pages.POM;
-import io.loop.utilities.BrowserUtil;
+import io.loop.utilities.BrowserUtils;
 import io.loop.utilities.DocuportConstants;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -65,10 +65,10 @@ public class Veronika_ui_addNewContractor_stepDefs {
     public void user_selects_to_field(String option, String field) throws InterruptedException {
         switch (field.toLowerCase().trim()) {
             case "state" -> {
-                BrowserUtil.waitForClickablility(pages.getForm1099Page().stateDropdown, DocuportConstants.LARGE).click();
+                BrowserUtils.waitForClickablility(pages.getForm1099Page().stateDropdown, DocuportConstants.LARGE).click();
                 Thread.sleep(3000);
-                BrowserUtil.waitForVisibility(pages.getForm1099Page().stateDropdown, DocuportConstants.LARGE).sendKeys(option);
-                BrowserUtil.waitForClickablility(pages.getForm1099Page().massachusettsOption, DocuportConstants.LARGE).click();
+                BrowserUtils.waitForVisibility(pages.getForm1099Page().stateDropdown, DocuportConstants.LARGE).sendKeys(option);
+                BrowserUtils.waitForClickablility(pages.getForm1099Page().massachusettsOption, DocuportConstants.LARGE).click();
                 LOG.info("Massachusetts - was successfully sent to - " + field);
             }
             default -> throw new IllegalArgumentException("No such a field: " + field);
