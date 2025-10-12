@@ -4,11 +4,9 @@ public class POM {
 
     private LoginPageDocuport loginPage;
     private BaseDocuportPage baseDocuportPage;
-    private LeftNavigatePage leftNavigatePage;
-    private Form1099Page form1099Page;
-    private ReceivedDocsPage receivedDocsPage;
-    private InvitationsPage invitationsPage;
-    private MyUploadsPage myUploadsPage;
+    private Jane_LogOutPage logOutPage;
+    private Jane_LeftNavigatePage leftNavigatePage;
+
 
     public LoginPageDocuport getLoginPage() {
         if (loginPage == null){
@@ -16,41 +14,27 @@ public class POM {
         }
         return loginPage;
     }
+
     public BaseDocuportPage getBaseDocuportPage() {
         if (baseDocuportPage == null){
             baseDocuportPage = new BaseDocuportPage();
         }
         return baseDocuportPage;
     }
-    public Form1099Page getForm1099Page() {
-        if (form1099Page == null){
-            form1099Page = new Form1099Page();
+
+    public Jane_LogOutPage getLogOutPage() {
+        if (logOutPage == null){
+            logOutPage = new Jane_LogOutPage();
         }
-        return form1099Page;
+        return logOutPage;
     }
-    public ReceivedDocsPage getReceivedDocsPage() {
-        if (receivedDocsPage == null){
-            receivedDocsPage = new ReceivedDocsPage();
-        }
-        return receivedDocsPage;
-    }
-    public LeftNavigatePage getLeftNavigatePage() {
+
+    public Jane_LeftNavigatePage getLeftNavigatePage() {
         if (leftNavigatePage == null){
-            leftNavigatePage = new LeftNavigatePage();
+            leftNavigatePage = new Jane_LeftNavigatePage();
         }
         return leftNavigatePage;
     }
-    public InvitationsPage getInvitationsPage() {
-        if (invitationsPage == null){
-            invitationsPage = new InvitationsPage();
-        }
-        return invitationsPage;
-    }
-    public MyUploadsPage getMyUploadsPage() {
-        if (myUploadsPage == null){
-            myUploadsPage = new MyUploadsPage();
-        }
-        return myUploadsPage;
-    }
+
 
 }
