@@ -6,9 +6,9 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "classpath:features/ui",
-        glue = "io.loop.ui",           // or "io.loop.ui" only for UI
+        glue = "io.loop",           // or "io.loop.ui" only for UI
         tags = "@ui",
-        dryRun = true,              // turn off after it compiles
+        dryRun = false,              // turn off after it compiles
         plugin = {
                 "pretty",
                 "html:target/html-reports/ui-report.html",
@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
                 // add the Extent adapter back after the POM fix below
                 // "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
         },
-        monochrome = false,
+        monochrome = true,
         publish = false
 )
 public class UI_CukesRunner {
