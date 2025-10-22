@@ -33,13 +33,10 @@ public class polina_DB03_stepDefs {
                 if (!rs.next()) {
                     Assert.fail("No document row found for display_name = '" + fileName + "'");
                 }
-
-                // Map current row -> String values
                 Map<String, String> dbRow = currentRowToStringMap(rs);
 
-                // Compare only the fields provided in the DataTable
                 for (Map.Entry<String, String> e : expected.entrySet()) {
-                    String col = e.getKey();          // e.g., "display_name", "is_deleted"
+                    String col = e.getKey();
                     String exp = e.getValue();
                     String act = dbRow.get(col);
                     Assert.assertEquals("Mismatch for column '" + col + "'" + act, exp, act);
@@ -71,7 +68,7 @@ public class polina_DB03_stepDefs {
         ResultSetMetaData meta = rs.getMetaData();
         int cols = meta.getColumnCount();
         for (int i = 1; i <= cols; i++) {
-            String label = meta.getColumnLabel(i);   // uses alias
+            String label = meta.getColumnLabel(i);
             Object val = rs.getObject(i);
             row.put(label, val == null ? null : String.valueOf(val));
         }

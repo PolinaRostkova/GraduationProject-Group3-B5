@@ -25,7 +25,7 @@ public class Hook {
             scenario.attach(screenshot, "image/png", scenario.getName());
         }
 
-        //Driver.closeDriver();
+        Driver.closeDriver();
     }
 
     @Before("@db")
