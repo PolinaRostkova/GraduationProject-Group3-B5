@@ -1,1 +1,8 @@
-21.10.2025 23:35:34 INFO  polina_DB03_stepDefs:66 - The document record with name PolinaTestDocument.txt has been deleted in DB
+28.10.2025 19:08:08 INFO  Polina_UI03_StepDefs:57 - Service name button was clicked on the My uploads page
+28.10.2025 19:08:08 INFO  Polina_UI03_StepDefs:96 - Consultancy was clicked on the Service name
+28.10.2025 19:08:08 INFO  Polina_UI03_StepDefs:57 - IRS/State Letter button was clicked on the My uploads page
+28.10.2025 19:08:08 INFO  Polina_UI03_StepDefs:57 - Q1 button was clicked on the My uploads page
+28.10.2025 19:08:08 INFO  Polina_UI03_StepDefs:57 - Upload button was clicked on the My uploads page
+28.10.2025 19:08:08 INFO  Polina_DB03_UI_stepDefs:14 - Document is uploaded with the name PolinaTestDocument.txt
+28.10.2025 19:08:09 INFO  polina_DB03_stepDefs:49 - The document record with name PolinaTestDocument.txt has been verified in DB
+28.10.2025 19:08:09 INFO  polina_DB03_stepDefs:63 - The document record with name PolinaTestDocument.txt has been deleted in DB

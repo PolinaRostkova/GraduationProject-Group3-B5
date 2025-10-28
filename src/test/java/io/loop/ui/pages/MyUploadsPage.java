@@ -4,10 +4,9 @@ import io.loop.utilities.BrowserUtils;
 import io.loop.utilities.DocuportConstants;
 import io.loop.utilities.Driver;
 import lombok.Getter;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.remote.LocalFileDetector;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -89,16 +88,22 @@ public class MyUploadsPage {
     }
 
     public void uploadHiddenFile(WebDriver driver, WebElement inputLocator, String absolutePath) {
-        if (driver instanceof org.openqa.selenium.remote.RemoteWebDriver) {
-            ((org.openqa.selenium.remote.RemoteWebDriver) driver)
-                    .setFileDetector(new org.openqa.selenium.remote.LocalFileDetector());
+        try {
+            if (driver instanceof RemoteWebDriver remote) {
+                remote.setFileDetector(new LocalFileDetector());
+            }
+        } catch (UnsupportedOperationException | WebDriverException e) {
+           e.getMessage();
         }
-        ((JavascriptExecutor) Driver.getDriver()).executeScript(
+
+        ((JavascriptExecutor) driver).executeScript(
                 "arguments[0].classList.remove('d-none');" +
-                        "arguments[0].style.display='block'; arguments[0].style.visibility='visible'; arguments[0].style.opacity=1;",
+                        "arguments[0].style.display='block';" +
+                        "arguments[0].style.visibility='visible';" +
+                        "arguments[0].style.opacity=1;",
                 inputLocator
         );
+
         inputLocator.sendKeys(absolutePath);
     }
-
 }
