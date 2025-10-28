@@ -60,7 +60,7 @@ public class LoginPageDocuport extends BaseDocuportPage{
                 continueButton.click();
                 Thread.sleep(3000);
             }
-            default -> throw new IllegalArgumentException("Invalid role");
+            default -> throw new IllegalArgumentException("Invalid role: " + role);
         }
     }
 
