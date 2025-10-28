@@ -1,1 +1,5 @@
-12.10.2025 19:28:49 INFO  Polina_UI03_StepDefs:106 - Search results are displayed
+21.10.2025 09:08:04 INFO  Veronika_ui_addNewContractor_stepDefs:43 - Massachusetts - was successfully sent to - State
+21.10.2025 09:08:04 INFO  Veronika_ui_addNewContractor_stepDefs:29 - 57919 - was successfully sent to - Zip code
+21.10.2025 09:08:04 INFO  Veronika_ui_addNewContractor_stepDefs:29 - 79.00 - was successfully sent to - Total payment
+21.10.2025 09:08:05 INFO  Polina_UI03_StepDefs:65 - save - was successfully clicked
+21.10.2025 09:08:05 INFO  Veronika_ui_addNewContractor_stepDefs:52 - contractorLuna Siera - is displayed
