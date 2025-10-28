@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/src/test/java/io/loop/db/JDBC_step_def/polina_DB03_stepDefs.java" dialect="GenericSQL" />
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/e5204cf7-2d95-4be0-9ac4-473d0c42fd2e/console_2.sql" dialect="MySQL" />
+    <file url="PROJECT" dialect="AZURE" />
   </component>
 </project>

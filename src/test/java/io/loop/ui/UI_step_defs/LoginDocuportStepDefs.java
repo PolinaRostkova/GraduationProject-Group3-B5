@@ -4,7 +4,6 @@ import io.cucumber.java.en.*;
 import io.loop.ui.pages.LoginPageDocuport;
 import io.loop.ui.pages.POM;
 import io.loop.utilities.BrowserUtils;
-import io.loop.utilities.ConfigurationReader;
 import io.loop.utilities.DocuportConstants;
 import io.loop.utilities.Driver;
 import org.openqa.selenium.By;

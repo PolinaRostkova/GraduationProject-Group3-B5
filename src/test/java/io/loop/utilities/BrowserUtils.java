@@ -594,6 +594,4 @@ public class BrowserUtils {
                 if (upper) robot.keyRelease(KeyEvent.VK_SHIFT);
         }
     }
-
-
 }
