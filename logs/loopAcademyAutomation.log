@@ -1,1 +1,6 @@
-12.10.2025 19:28:49 INFO  Polina_UI03_StepDefs:106 - Search results are displayed
+28.10.2025 17:13:12 INFO  Jane_DB_US_04_UIStepDefs:57 - The name is visible in the UI: [Aldo Barton, Alita Effertz, Antone Rippin]
+28.10.2025 17:13:12 INFO  Jane_DB_US_04_UIStepDefs:75 - The name is visible in the DB: Aldo Barton
+28.10.2025 17:13:12 INFO  Jane_DB_US_04_UIStepDefs:75 - The name is visible in the DB: Alita Effertz
+28.10.2025 17:13:12 INFO  Jane_DB_US_04_UIStepDefs:75 - The name is visible in the DB: Antone Rippin
+28.10.2025 17:13:12 INFO  Jane_UI01_LoginAndLogOut_stepDefs:56 - User icon was clicked
+28.10.2025 17:13:13 INFO  Jane_UI01_LoginAndLogOut_stepDefs:58 - User successfully logged out

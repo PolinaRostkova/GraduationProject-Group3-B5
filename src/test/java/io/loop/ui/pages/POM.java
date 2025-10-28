@@ -10,6 +10,7 @@ public class POM {
     private InvitationsPage invitationsPage;
     private MyUploadsPage myUploadsPage;
     private LogOutPage logOutPage;
+    private ClientsPage clientsPage;
 
     public LoginPageDocuport getLoginPage() {
         if (loginPage == null){
@@ -59,6 +60,13 @@ public class POM {
             logOutPage = new LogOutPage();
         }
         return logOutPage;
+    }
+
+    public ClientsPage getClientsPage() {
+        if (clientsPage == null){
+            clientsPage = new ClientsPage();
+        }
+        return clientsPage;
     }
 
 }
