@@ -8,6 +8,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 
+import java.nio.file.Paths;
+
 public class DocuportGeneralStepDefs {
     private static final Logger LOGGER = LogManager.getLogger(Polina_UI03_StepDefs.class);
     POM pages = new POM();
@@ -27,8 +29,12 @@ public class DocuportGeneralStepDefs {
     }
     @Then("user uploads a document")
     public void user_uploads_a_document() throws Exception {
-        BrowserUtils.uploadFileMac2("/Users/Polina/Desktop/untitled.txt");
+        String path = Paths.get("src","test","resources","data","PolinaTestDocument.txt")
+                .toAbsolutePath().toString();
+        pages.getMyUploadsPage().uploadHiddenFile(Driver.getDriver(), pages.getMyUploadsPage().getFileInput(), path);
     }
+
+
     @Then("a new tab should open with heading {string}")
     public void a_new_tab_should_open_with_heading(String termsAndConditionsHeading) {
         BrowserUtils.switchWindowAndValidate(Driver.getDriver(), "https://numbersquad.com/service-terms-and-conditions", termsAndConditionsHeading);

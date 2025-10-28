@@ -9,46 +9,144 @@ public class DB_Utility {
     private static Connection con ;
     private static Statement stm ;
     private static ResultSet rs ;
-    private static ResultSetMetaData rsmd ;
+    private static ResultSetMetaData rsmd;
+    /**
+     *
+     * @param query
+     * @return returns query result in a list of lists where outer list represents
+     *         collection of rows and inner lists represent a single row
+     */
+    public static List<List<Object>> getQueryResultList(String query) {
+        executeQuery(query);
+        List<List<Object>> rowList = new ArrayList<>();
+        ResultSetMetaData rsmd;
+        try {
+            rsmd = rs.getMetaData();
+            while (rs.next()) {
+                List<Object> row = new ArrayList<>();
+                for (int i = 1; i <= rsmd.getColumnCount(); i++) {
+                    row.add(rs.getObject(i));
+                }
+                rowList.add(row);
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return rowList;
+    }
+    /**
+     *
+     * @param query
+     * @return returns a single cell value. If the results in multiple rows and/or
+     *         columns of data, only first column of the first row will be returned.
+     *         The rest of the data will be ignored
+     */
+    public static Object getCellValue(String query) {
+        return getQueryResultList(query).get(0).get(0);
+    }
+    /**
+     *
+     * @param query
+     * @return returns a list of Strings which represent a row of data. If the query
+     *         results in multiple rows and/or columns of data, only first row will
+     *         be returned. The rest of the data will be ignored
+     */
+    public static List<Object> getRowList(String query) {
+        return getQueryResultList(query).get(0);
+    }
+    /**
+     *
+     * @param query
+     * @return returns a map which represent a row of data where key is the column
+     *         name. If the query results in multiple rows and/or columns of data,
+     *         only first row will be returned. The rest of the data will be ignored
+     */
 
+    public static Map<String, Object> getRowMap(String query) {
+        return getQueryResultMap(query).get(0);
+    }
 
+    private static void executeQuery(String query) {
+        try {
+            stm = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        try {
+            rs = stm.executeQuery(query);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+    /**
+     *
+     * @param query
+     * @return returns query result in a list of maps where the list represents
+     *         collection of rows and a map represents represent a single row with
+     *         key being the column name
+     */
+    public static List<Map<String, Object>> getQueryResultMap(String query) {
+        executeQuery(query);
+        List<Map<String, Object>> rowList = new ArrayList<>();
+        ResultSetMetaData rsmd;
+        try {
+            rsmd = rs.getMetaData();
+            while (rs.next()) {
+                Map<String, Object> colNameValueMap = new HashMap<>();
+                for (int i = 1; i <= rsmd.getColumnCount(); i++) {
+                    colNameValueMap.put(rsmd.getColumnName(i), rs.getObject(i));
+                }
+                rowList.add(colNameValueMap);
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return rowList;
+    }
     /**
      * Create Connection by jdbc url and username , password provided
      * @param url  jdbc url for any database
      * @param username username for database
      * @param password password for database
      */
-    public static void createConnection(String url , String username, String password){
+    public static Connection createConnection(String url , String username, String password){
         try {
             con = DriverManager.getConnection(url, username, password) ;
             System.out.println("CONNECTION SUCCESSFUL");
         } catch (Exception e) {
             System.out.println("CONNECTION HAS FAILED " + e.getMessage() );
         }
+        return con;
     }
 
 
     /**
      * Create connection method , just checking one connection successful or not
      */
-    public static void createConnection(){
+    public static Connection createConnection(){
         // PLEASE, MAKE SURE YOU UPDATE THE IP ADDRESS TO THE ONE YOU HAVE CURRENTLY
         String url = "jdbc:oracle:thin:@98.80.65.248:1521:XE" ;
         //String url = ConfigurationReader.getProperty("hr.db.url"); // Since we have added config.properties and ConfigReader, I can get directly from there as well
         String username =  "hr";
         String password =  "hr";
 
-        createConnection(url, username, password);
+       con = createConnection(url, username, password);
+       return con;
     }
 
-    public static void docuportCreateConnection(){
+    public static Connection docuportCreateConnection(){
         // PLEASE, MAKE SURE YOU UPDATE THE IP ADDRESS TO THE ONE YOU HAVE CURRENTLY
         String url = ConfigurationReader.getProperty("docuport.db.url");
         //String url = ConfigurationReader.getProperty("hr.db.url"); // Since we have added config.properties and ConfigReader, I can get directly from there as well
         String username = ConfigurationReader.getProperty("docuport.db.username");
         String password =  ConfigurationReader.getProperty("docuport.db.password");
 
-        createConnection(url, username, password);
+       con =  createConnection(url, username, password);
+       return con;
     }
 
 

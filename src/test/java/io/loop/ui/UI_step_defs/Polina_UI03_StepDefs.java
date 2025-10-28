@@ -87,6 +87,14 @@ public class Polina_UI03_StepDefs {
                pages.getReceivedDocsPage().clickDropdownOption(dropDownOption);
                LOGGER.info(dropDownOption + " was clicked on the " + dropDown);
            }
+           case "client name" -> {
+               pages.getMyUploadsPage().clickDropdownOption(dropDownOption);
+               LOGGER.info(dropDownOption + " was clicked on the " + dropDown);
+           }
+           case "service name" -> {
+               pages.getMyUploadsPage().clickDropdownOption(dropDownOption);
+               LOGGER.info(dropDownOption + " was clicked on the " + dropDown);
+           }
            default -> throw new IllegalArgumentException("No such a dropdown: " + dropDown);
        }
     }
