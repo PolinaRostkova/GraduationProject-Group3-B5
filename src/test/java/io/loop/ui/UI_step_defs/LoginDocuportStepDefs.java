@@ -52,7 +52,7 @@ public class LoginDocuportStepDefs {
         Thread.sleep(2000);
         List<WebElement> matches = Driver.getDriver().findElements(By.xpath("//span[.=' Continue ']"));
         if (!matches.isEmpty()) {
-            new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(3)).until(ExpectedConditions.elementToBeClickable(matches.getFirst())).click();
+            new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(3)).until(ExpectedConditions.elementToBeClickable(matches.get(0))).click();
         }
 
         assertTrue("User didn't login and can't see the home page", BrowserUtils.waitForVisibility(loginPageDocuport.docuportImage, 10).isDisplayed());
