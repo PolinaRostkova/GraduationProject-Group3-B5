@@ -45,6 +45,11 @@ public class Driver {
             switch (browserType) {
                 case "chrome" -> {
                     options.addArguments("--disable-blink-features=AutomationControlled");
+                        options.addArguments("--headless=new");           // or "--headless" if old chrome
+                        options.addArguments("--no-sandbox");
+                        options.addArguments("--disable-dev-shm-usage");
+                        options.addArguments("--disable-gpu");
+                        options.addArguments("--window-size=1920,1080");
                     driverPool.set(new ChromeDriver(options));
                 }
                 case "firefox" -> driverPool.set(new FirefoxDriver());
